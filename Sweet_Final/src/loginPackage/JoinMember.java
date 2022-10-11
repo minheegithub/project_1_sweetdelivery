@@ -140,56 +140,39 @@ public class JoinMember extends JFrame {
 				}else {
 					//폴더생성
 					File f = new File(".\\src\\resource\\MemberJoin");
-					File f1 = new File(".\\src\\resource\\FindId");
 					
 					if(!f.exists()) {
 						f.mkdir();
-						f1.mkdir();
 						System.out.println("MemberJoin폴더가 생성");
 					}else {
 						System.out.println("폴더가 이미 있습니다.");
 					}				
-					
-					File f3 = new File(".\\src\\resource\\MemberJoin\\"+id+".txt");
-					if(f3.exists()) {
-						JOptionPane.showMessageDialog(null,"이미 가입된 아이디 입니다.");
-					}else {
-						//아이디파일이 존재하지 않을 경우 텍스트 파일이 생성되도록 한다. 
+
+					try {
+						bw = new BufferedWriter(new FileWriter(".\\src\\resource\\MemberJoin\\"+id+".txt"));
+						bw.write(id);
+						bw.write(",");
+						bw.write(name);
+						bw.write(",");
+						bw.write(pw);
+						bw.write(",");
+						bw.write(telNum);
+						bw.write(",");
+						bw.write(address);
+						
+						JOptionPane.showMessageDialog(null, name+" 님 Sweet Delivery의 회원이 되신걸 환영합니다. 로그인 창으로 이동합니다.");
+						dispose();
+						setVisible(false);
+						new LoginMember().setVisible(true);		
+					} catch (IOException e1) {					
+						e1.printStackTrace();
+					} finally {
 						try {
-							bw = new BufferedWriter(new FileWriter(".\\src\\resource\\MemberJoin\\"+id+".txt"));
-							bw.write(id);
-							bw.write(",");
-							bw.write(name);
-							bw.write(",");
-							bw.write(pw);
-							bw.write(",");
-							bw.write(telNum);
-							bw.write(",");
-							bw.write(address);
-							
-							bw1 = new BufferedWriter(new FileWriter(".\\src\\resource\\FindId\\"+name+".txt"));
-							
-							bw1.write(id);
-							bw1.write(",");
-							bw1.write(name);
-							bw1.write(",");
-							bw1.write(telNum);
-							
-							JOptionPane.showMessageDialog(null, name+" 님 Sweet Delivery의 회원이 되신걸 환영합니다. 로그인 창으로 이동합니다.");
-							dispose();
-							setVisible(false);
-							new LoginMember().setVisible(true);		
-						} catch (IOException e1) {					
+							if(bw != null) {bw.close();}
+						} catch (IOException e1) {							
 							e1.printStackTrace();
-						} finally {
-							try {
-								if(bw != null) {bw.close();}
-								if(bw1 != null) {bw1.close();}
-							} catch (IOException e1) {							
-								e1.printStackTrace();
-							}					
-						}//try-catch
-					}//if
+						}					
+					}//try-catch
 				}
 					
 					
@@ -224,7 +207,8 @@ public class JoinMember extends JFrame {
 							JOptionPane.showMessageDialog(null, "이미 존재하는 아이디 입니다.");
 						}
 					} catch (Exception e1) {
-						btnJoin.setEnabled(true);
+//						e1.printStackTrace();
+						btnJoin.setEnabled(true);//저장된 아이디가 없기 떄문에 사용가능한 아이디 --> 회원가입 버튼 활성화
 						JOptionPane.showMessageDialog(null, "사용이 가능한 아이디 입니다.");
 								
 					} finally {

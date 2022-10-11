@@ -110,8 +110,6 @@ public class LoginMember extends JFrame {
 								
 				loginPw = txtPw.getText().trim();
 				
-//				if(txtId.getText().trim().length() == 0 || txtPw.getText().length() == 0 ) {
-//					JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 입력하셔야 합니다.");
 				if(loginId.length() == 0 || loginPw.length() == 0 ) {
 					JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 입력하셔야 합니다.");
 				}else {
@@ -124,7 +122,6 @@ public class LoginMember extends JFrame {
 						
 						String readMember = br.readLine();
 						String[] bea = readMember.split(",");
-//						if(loginId.equals(bea[0]) && loginPw.equals(bea[2])) {
 						if(loginPw.equals(bea[2])) {
 							JOptionPane.showMessageDialog(null, bea[1]+"님 Sweet Delivery에 입장하신걸 환영합니다.");
 					
