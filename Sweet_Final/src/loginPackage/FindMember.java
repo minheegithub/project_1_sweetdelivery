@@ -125,25 +125,31 @@ public class FindMember extends JFrame {
 				String phone = txtPhone1.getText().trim();
 				FileReader fr = null;
 				BufferedReader br = null;
+				int count = 0;
+				
+				String path = ".\\src\\resource\\MemberJoin\\"+id+".txt";
 				
 				try {
-					fr = new FileReader(".\\src\\resource\\MemberJoin\\"+id+".txt");
+					fr = new FileReader(path);
 					br = new BufferedReader(fr);
 					
 					String read = br.readLine();
 					String[] bea = read.split(",");
-					if(bea[0].equals(id) && bea[1].equals(name) && bea[3].equals(phone)) {
+					if(bea[1].equals(name) && bea[3].equals(phone)) {
 						String pw = bea[2];
 						System.out.println(pw);
 						
 						String pwHint = pw.substring(0,2);
 						for (int i = 0; i < pw.length()-2; i++) {
 							pwHint += "*";
+							count++;
 						}
+						 
+						count = count + 2;
 						
-						JOptionPane.showMessageDialog(null, "비밀번호 힌트 : "+pwHint);
+						JOptionPane.showMessageDialog(null, "비밀번호 힌트 : "+pwHint+"\n비밀번호 전체 자리수 : "+count);
 					}else {
-						JOptionPane.showMessageDialog(null, "등록된 정보가 일치하지 않습니다.");
+						JOptionPane.showMessageDialog(null, "회원의 이름과 전화번호가 일치하지 않습니다.");
 					}
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(null, "등록된 아이디가 없습니다.");

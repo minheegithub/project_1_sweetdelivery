@@ -37,7 +37,8 @@ public class Branch extends JFrame {
 
 	String localchoice;
 	String localchoice1;
-	JTextField txtChoice;
+//	JTextField txtChoice;
+	JLabel txtChoice;
 
 	String[] local = {"원하시는 지점을 선택하세요", "서울", "경기", "부산"};
 	
@@ -45,7 +46,8 @@ public class Branch extends JFrame {
 	int imgId;
 	private JLabel lbAd;
 	private JLabel lblAd;
-	private JTextField txtlocal;;
+//	private JTextField txtlocal;
+	private JLabel txtlocal;
 	
 	JLabel lbad2;
 	
@@ -117,17 +119,19 @@ public class Branch extends JFrame {
 		branchLb.setBounds(382, 154, 156, 131);
 		panel.add(branchLb);
 		
-		txtChoice = new JTextField();
+//		txtChoice = new JTextField();
+		txtChoice = new JLabel();
 		txtChoice.setFont(new Font("나눔스퀘어OTF Light", Font.BOLD, 17));
 		txtChoice.setBounds(377, 312, 65, 33);
 		panel.add(txtChoice);
-		txtChoice.setColumns(10);
+//		txtChoice.setColumns(10);
 		
-		txtlocal = new JTextField();
+//		txtlocal = new JTextField();
+		txtlocal = new JLabel();
 		txtlocal.setFont(new Font("나눔스퀘어OTF Light", Font.BOLD, 17));
 		txtlocal.setBounds(443, 312, 121, 33);
 		panel.add(txtlocal);
-		txtlocal.setColumns(10);
+//		txtlocal.setColumns(10);
 		
 		//by최민희 서울, 경기, 부산 지역 고르기	
 		branchCb = new JComboBox();
@@ -302,8 +306,8 @@ public class Branch extends JFrame {
 			}
 		});
 		btnLeft.setBackground(Color.WHITE);
-		btnLeft.setIcon(new ImageIcon(Branch.class.getResource("/image/left3.png")));
-		btnLeft.setBounds(133, 308, 30, 27);
+		btnLeft.setIcon(new ImageIcon(Branch.class.getResource("/image/left.png")));
+		btnLeft.setBounds(10, 200, 40, 66);
 	
 		panel.add(btnLeft);
 		
@@ -316,10 +320,10 @@ public class Branch extends JFrame {
 				lbAd.setIcon(img[imgId]);//0,1,2,3
 			}
 		});
-		btnright.setIcon(new ImageIcon(Branch.class.getResource("/image/right3.png")));
+		btnright.setIcon(new ImageIcon(Branch.class.getResource("/image/right.png")));
 		btnright.setForeground(Color.WHITE);
 		btnright.setBackground(Color.WHITE);
-		btnright.setBounds(177, 308, 30, 27);
+		btnright.setBounds(300, 200, 40, 66);
 		panel.add(btnright);
 		
 		lbad2 = new JLabel("");

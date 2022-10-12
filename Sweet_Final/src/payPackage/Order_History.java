@@ -41,7 +41,7 @@ public class Order_History extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Order_History frame = new Order_History("현금/카드");
+					Order_History frame = new Order_History("현금/카드",0);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +50,7 @@ public class Order_History extends JFrame {
 		});
 	}
 
-	public Order_History(String howToPay) {
+	public Order_History(String howToPay, int realTotal) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 464, 529);
 		contentPane = new JPanel();
@@ -98,7 +98,7 @@ public class Order_History extends JFrame {
 		//by최민희 영수증 작성
 		String arrProduct[] = cu.bringProduct(currentId);
 		String arrCost[] = cu.bringCost(currentId);
-		String total = cu.bringTotal(currentId);
+		String total = ""+realTotal;
 		String receipt = "============================\n"
 				+"스위트 딜리버리("+branch1+branch2+")\n"
 				+ order_time+"("+currentId+"님)\n"

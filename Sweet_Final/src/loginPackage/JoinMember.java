@@ -132,11 +132,12 @@ public class JoinMember extends JFrame {
 				String telNum = txtTelNum.getText().trim(); 
 				String address = txtAddress.getText();
 				
+				
+				
 				if(name.length() == 0 || id.length() == 0 || pw.length() == 0 || telNum.length() == 0 ) {
 					JOptionPane.showMessageDialog(null, "회원정보를 입력하세요");
 				}else if(pw.length() < 7){
 					JOptionPane.showMessageDialog(null, "비밀번호는 7자리 이상입력하세요");
-		
 				}else {
 					//폴더생성
 					File f = new File(".\\src\\resource\\MemberJoin");
@@ -147,9 +148,10 @@ public class JoinMember extends JFrame {
 					}else {
 						System.out.println("폴더가 이미 있습니다.");
 					}				
-
+					
+					String path = ".\\src\\resource\\MemberJoin\\"+id+".txt";
 					try {
-						bw = new BufferedWriter(new FileWriter(".\\src\\resource\\MemberJoin\\"+id+".txt"));
+						bw = new BufferedWriter(new FileWriter(path));
 						bw.write(id);
 						bw.write(",");
 						bw.write(name);

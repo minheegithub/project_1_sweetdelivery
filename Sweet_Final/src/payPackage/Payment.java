@@ -345,7 +345,7 @@ public class Payment extends JFrame {
 					//by최민희 총액에서 적용값 빼주기
 					realTotal = realTotal - minusPoint;
 					txtTotalPayment.setText(String.valueOf(realTotal));
-					
+					System.out.println("포인트 적용 후 총 금액"+realTotal);
 					cnt1 = 1;//by최민희 다시 조회 했을때 이미 포인트 적용한 것을 기억하기 위해 
 //					System.out.println("적용후 cnt1 : "+cnt1);
 					//by최민희 성공적으로 적용이 되었을대 조회, 적용 버튼을 죽인다.
@@ -380,7 +380,7 @@ public class Payment extends JFrame {
 					realTotal = total; 
 					realTotal -= dcPrice;
 					txtTotalPayment.setText(String.valueOf(realTotal));
-					
+					System.out.println("쿠폰적용후 총금액"+realTotal);
 					cnt2 = 1;//다시 조회 했을때 이미 쿠폰 적용한 것을 기억하기 위해 
 //					System.out.println("적용후 cnt2 : "+cnt2);
 					//by최민희 성공적으로 적용이 되었을대 조회, 적용 버튼을 죽인다.
@@ -523,7 +523,7 @@ public class Payment extends JFrame {
 				
 				dispose();
 				setVisible(false);
-				new Order_History(gibonSelect).setVisible(true);
+				new Order_History(gibonSelect, realTotal).setVisible(true);
 			}
 		});
 		btnComplete.setFont(new Font("나눔바른고딕", Font.PLAIN, 15));

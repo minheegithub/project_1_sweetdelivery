@@ -35,8 +35,6 @@ public class LoginMember extends JFrame {
 	String loginId;
 	String loginPw;
 	
-	String userName;
-
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -107,7 +105,6 @@ public class LoginMember extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				loginId = txtId.getText().trim();
-								
 				loginPw = txtPw.getText().trim();
 				
 				if(loginId.length() == 0 || loginPw.length() == 0 ) {
@@ -116,8 +113,8 @@ public class LoginMember extends JFrame {
 					FileReader fr = null;
 					BufferedReader br = null;
 					try {
-						
-						fr = new FileReader(".\\src\\resource\\MemberJoin\\"+loginId+".txt");
+						String path = ".\\src\\resource\\MemberJoin\\"+loginId+".txt";
+						fr = new FileReader(path);
 						br = new BufferedReader(fr);
 						
 						String readMember = br.readLine();
@@ -128,7 +125,6 @@ public class LoginMember extends JFrame {
 							dispose();
 							setVisible(false);
 							new Branch(bea[0], bea[1], bea[2], bea[3], bea[4]).setVisible(true); //생성자로 값을 넘김.
-							userName = bea[1];
 
 						}else {
 							JOptionPane.showMessageDialog(null, "비밀번호를 확인해주세요");
