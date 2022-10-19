@@ -30,12 +30,9 @@ import java.awt.event.ActionEvent;
 public class Order_History extends JFrame {
 
 	private JPanel contentPane;
-	
 	String currentId, name, pw, phone, address, branch1, branch2;
-	
 	File file4 = new File(".\\src\\resource\\Text\\receipt.txt");  //장바구니에 담긴 총금액이 저장된다.
 	String order_time;
-	
 	CurrentUser cu = new CurrentUser();
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -93,12 +90,29 @@ public class Order_History extends JFrame {
 		
 		currentId = bea[0]; name = bea[1]; pw = bea[2]; phone = bea[3]; 
 		address = bea[4]; branch1 =  bea[5]; branch2 =  bea[6];
-		System.out.println("마지막 유저정보"+currentId+"+"+name+"+"+pw+"+"+phone+"+"+address+"+"+branch1+branch2);
+		
+		
 		
 		//by최민희 영수증 작성
 		String arrProduct[] = cu.bringProduct(currentId);
 		String arrCost[] = cu.bringCost(currentId);
 		String total = ""+realTotal;
+		
+		char[] c = total.toCharArray();
+		String price1 = "";
+		for (int j = c.length -1; j >= 0; j--) {
+			price1 += c[j];
+		}
+		char[] c2 = price1.toCharArray();
+		String price2 = "";
+		for (int i = c2.length -1; i >= 0; i--) {
+			price2 += c2[i];
+			if(i % 3 == 0) {
+				price2 += ",";
+			}
+		}
+		String price3 = price2.substring(0,price2.length()-1);
+		
 		String receipt = "============================\n"
 				+"스위트 딜리버리("+branch1+branch2+")\n"
 				+ order_time+"("+currentId+"님)\n"
@@ -112,7 +126,7 @@ public class Order_History extends JFrame {
 		
 		receipt += "배달비 (1500원)\n"
 				+ "--------------------------------------\n"
-				+ "합계(쿠폰/포인트 적용)   "+total+"원\n"
+				+ "합계(쿠폰/포인트 적용)   "+price3+"원\n"
 				+ "============================\n\n";
 		BufferedWriter bw = null;
 			try {
@@ -172,7 +186,7 @@ public class Order_History extends JFrame {
 		lbTotal1.setBounds(63, 80, 300, 18);
 		panel.add(lbTotal1);
 		
-		JLabel lbTotalP = new JLabel(total);
+		JLabel lbTotalP = new JLabel(price3);
 		lbTotalP.setFont(new Font("나눔바른고딕", Font.PLAIN, 17));
 		lbTotalP.setForeground(new Color(0, 128, 128));
 		lbTotalP.setBounds(80, 78, 300, 18);
