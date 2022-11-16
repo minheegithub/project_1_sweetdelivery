@@ -20,3 +20,4 @@ JAVA GUI를 활용하여 가장 웹페이지에 가까운 화면을 설계하고
 </ul>
 
 <hr>
+<p align="center"><img src="https://user-images.githubusercontent.com/106230507/202121913-26d40e69-9e3c-41c8-8579-c8584e4f5ad0.png"></p>
